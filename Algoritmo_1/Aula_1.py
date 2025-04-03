@@ -37,6 +37,7 @@ x = ((raiz(y)) + a/3)/raiz(b/2a)
 
 '''
 
+
 import math
 n1 = float(input("Digite o primeiro lado do triângulo: "))
 n2 = float(input("Digite o segundo lado do triângulo: "))
