@@ -1,0 +1,67 @@
+Exercícios de Algoritmos em Python - Resumo de Emergência
+
+1. Par ou ímpar
+Peça um número ao usuário e diga se ele é par ou ímpar.
+num = int(input("Digite um número: "))
+# sua lógica aqui
+
+n = int(input('Digite um número: '))
+
+if n % 2 ==0:
+    print('O número é par')
+else:
+    print('O número é ímpar')
+
+
+2. Soma de 1 a N
+Peça um número `n` e calcule a soma de todos os números de 1 até `n`.
+n = int(input("Digite um número: "))
+# sua lógica aqui
+
+n = int(input('Digite um número: '))
+soma = 0
+
+for i in range(1, (n)+1):
+    soma += i
+print(soma)
+
+
+3. Maior número de uma lista
+Dada a lista nums = [3, 7, 1, 9, 4], encontre o maior número **sem usar max()**.
+
+4. Contar vogais em uma string
+Peça ao usuário uma frase e diga quantas vogais ela tem.
+
+frase = str(input("Digite uma frase: "))
+cont = 0
+
+for i in range(len(frase)):
+    if frase[i] == 'a' or frase[i] == 'á' or frase[i] == 'A'  or frase[i] == 'Á' or frase[i] == 'e' or frase[i] == 'é' or frase[i] == 'E' or frase[i] == 'É' or frase[i] == 'i' or frase[i] == 'í' or frase[i] == 'I' or frase[i] == 'Í' or frase[i] == 'o' or frase[i] == 'ó' or frase[i] == 'O' or frase[i] == 'Ó' or frase[i] == 'u' or frase[i] == 'ú' or frase[i] == 'U' or frase[i] == 'Ú':
+        cont += 1
+
+print(f"Tem {cont} vogais na frase.")
+
+
+5. Inverter string
+Peça ao usuário um texto e imprima ele de trás pra frente.
+Ex: 'Python' -> 'nohtyP'
+
+6. Fatorial com laço
+Peça um número e calcule o fatorial dele **sem usar recursão**.
+
+7. Verificar palíndromo
+Exercícios de Algoritmos em Python - Resumo de Emergência
+Peça uma palavra e diga se ela é um palíndromo.
+Ex: 'arara', 'radar' -> sim | 'casa' -> não
+
+8. Buscar elemento em lista
+Implemente uma função de busca linear.
+def busca(lista, valor):
+ # retorne o índice se achar, ou -1
+
+9. Ordenar uma lista (bubble sort)
+Dada a lista nums = [5, 2, 9, 1, 3], ordene com bubble sort.
+
+10. Soma dos pares de uma lista
+Some todos os números pares da lista abaixo:
+nums = [2, 7, 4, 9, 12, 5]
