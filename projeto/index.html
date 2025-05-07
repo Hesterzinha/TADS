@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumina - Semi-Joias de Luxo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-pattern {
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+        
+        .product-overlay {
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #d4a373;
+            transition: width .3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #d4a373;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="#" class="text-2xl font-bold title-font text-gray-800">LUMINA</a>
+                <span class="ml-2 text-xs text-gray-500">Semi-Joias</span>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="nav-link text-gray-700 hover:text-gray-900">Início</a>
+                <a href="#" class="nav-link text-gray-700 hover:text-gray-900">Coleções</a>
+                <a href="#" class="nav-link text-gray-700 hover:text-gray-900">Brincos</a>
+                <a href="#" class="nav-link text-gray-700 hover:text-gray-900">Colares</a>
+                <a href="#" class="nav-link text-gray-700 hover:text-gray-900">Pulseiras</a>
+                <a href="#" class="nav-link text-gray-700 hover:text-gray-900">Anéis</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <button class="text-gray-700 hover:text-gray-900">
+                        <i class="fas fa-search text-lg"></i>
+                    </button>
+                </div>
+                <div class="relative">
+                    <button class="text-gray-700 hover:text-gray-900" onclick="toggleCart()">
+                        <i class="fas fa-shopping-bag text-lg"></i>
+                        <span class="cart-badge bg-amber-600 text-white text-xs">3</span>
+                    </button>
+                </div>
+                <button class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-pattern bg-amber-50">
+        <div class="container mx-auto px-4 py-16 md:py-24 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="title-font text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4">Semi-Joias que <span class="text-amber-600">iluminam</span> seu estilo</h1>
+                <p class="text-gray-600 mb-8 text-lg">Descubra peças únicas que combinam elegância e acessibilidade para complementar seu visual.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-md font-medium transition duration-300">Compre Agora</a>
+                    <a href="#" class="border border-gray-300 hover:border-amber-600 text-gray-700 hover:text-amber-600 px-6 py-3 rounded-md font-medium transition duration-300">Ver Coleção</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://images.unsplash.com/photo-1611591437281-460914d22803?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Coleção de semi-joias" class="rounded-lg shadow-xl max-w-md w-full">
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="title-font text-3xl font-bold text-center text-gray-800 mb-12">Nossas Categorias</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <a href="#" class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Brincos" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-40 transition duration-300"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <h3 class="text-white text-xl font-bold title-font">Brincos</h3>
+                    </div>
+                </a>
+                <a href="#" class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1603974372036-a6d4cc4a0c57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Colares" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-40 transition duration-300"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <h3 class="text-white text-xl font-bold title-font">Colares</h3>
+                    </div>
+                </a>
+                <a href="#" class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1611591437281-460914d22803?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Pulseiras" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-40 transition duration-300"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <h3 class="text-white text-xl font-bold title-font">Pulseiras</h3>
+                    </div>
+                </a>
+                <a href="#" class="group relative overflow-hidden rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Anéis" class="w-full h-48 object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-40 transition duration-300"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <h3 class="text-white text-xl font-bold title-font">Anéis</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="title-font text-3xl font-bold text-gray-800">Destaques</h2>
+                <a href="#" class="text-amber-600 hover:text-amber-700 font-medium flex items-center">
+                    Ver todos <i class="fas fa-chevron-right ml-2 text-sm"></i>
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Product 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 relative">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1611591437281-460914d22803?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Colar de pérolas" class="w-full h-64 object-cover">
+                        <div class="product-overlay absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center opacity-0">
+                            <button class="bg-white text-gray-800 px-4 py-2 rounded-md font-medium hover:bg-amber-50 transition duration-300">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                        <span class="absolute top-4 left-4 bg-amber-600 text-white text-xs px-2 py-1 rounded">NOVO</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-medium text-gray-800 mb-1">Colar Pérola Dourada</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm ml-2">(42)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-gray-800">R$ 129,90</span>
+                            <button class="text-amber-600 hover:text-amber-700">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 relative">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Brincos de ouro" class="w-full h-64 object-cover">
+                        <div class="product-overlay absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center opacity-0">
+                            <button class="bg-white text-gray-800 px-4 py-2 rounded-md font-medium hover:bg-amber-50 transition duration-300">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-medium text-gray-800 mb-1">Brincos Folheado Ouro</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm ml-2">(28)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-gray-800">R$ 89,90</span>
+                            <button class="text-amber-600 hover:text-amber-700">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 relative">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Anel de prata" class="w-full h-64 object-cover">
+                        <div class="product-overlay absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center opacity-0">
+                            <button class="bg-white text-gray-800 px-4 py-2 rounded-md font-medium hover:bg-amber-50 transition duration-300">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                        <span class="absolute top-4 left-4 bg-red-500 text-white text-xs px-2 py-1 rounded">-20%</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-medium text-gray-800 mb-1">Anel Prata com Zircônia</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm ml-2">(56)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-lg font-bold text-gray-800">R$ 79,90</span>
+                                <span class="text-sm text-gray-500 line-through ml-2">R$ 99,90</span>
+                            </div>
+                            <button class="text-amber-600 hover:text-amber-700">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 relative">
+                    <div class="relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1603974372036-a6d4cc4a0c57?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Pulseira de ouro" class="w-full h-64 object-cover">
+                        <div class="product-overlay absolute inset-0 bg-black bg-opacity-0 flex items-center justify-center opacity-0">
+                            <button class="bg-white text-gray-800 px-4 py-2 rounded-md font-medium hover:bg-amber-50 transition duration-300">
+                                Ver Detalhes
+                            </button>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-medium text-gray-800 mb-1">Pulseira Corrente Dourada</h3>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-amber-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-sm ml-2">(34)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-gray-800">R$ 149,90</span>
+                            <button class="text-amber-600 hover:text-amber-700">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner -->
+    <section class="py-16 bg-amber-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="title-font text-3xl md:text-4xl font-bold mb-6">Coleção Verão 2023</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Peças brilhantes e leves perfeitas para dias ensolarados e noites memoráveis.</p>
+            <a href="#" class="inline-block bg-white text-amber-600 hover:bg-gray-100 px-8 py-3 rounded-md font-bold transition duration-300">
+                Explorar Coleção
+            </a>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="title-font text-3xl font-bold text-center text-gray-800 mb-12">O que dizem nossos clientes</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-amber-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Comprei um colar da Lumina e estou apaixonada! A qualidade é incrível e recebi vários elogios. Com certeza vou comprar mais peças."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-medium text-gray-800">Ana Carolina</h4>
+                            <p class="text-sm text-gray-500">São Paulo, SP</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-amber-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Os brincos que comprei são lindos e muito confortáveis. A entrega foi super rápida e o atendimento excelente. Recomendo muito!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-medium text-gray-800">Juliana Mendes</h4>
+                            <p class="text-sm text-gray-500">Rio de Janeiro, RJ</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-amber-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Presenteei minha esposa com uma pulseira da Lumina e ela adorou! A qualidade superou nossas expectativas pelo preço."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente" class="w-10 h-10 rounded-full mr-3">
+                        <div>
+                            <h4 class="font-medium text-gray-800">Ricardo Almeida</h4>
+                            <p class="text-sm text-gray-500">Belo Horizonte, MG</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-amber-600 p-8 text-white flex flex-col justify-center">
+                        <h3 class="title-font text-2xl font-bold mb-4">Junte-se à nossa comunidade</h3>
+                        <p class="mb-6">Inscreva-se para receber novidades, promoções exclusivas e dicas de estilo.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-white hover:text-gray-200">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="text-white hover:text-gray-200">
+                                <i class="fab fa-facebook-f text-xl"></i>
+                            </a>
+                            <a href="#" class="text-white hover:text-gray-200">
+                                <i class="fab fa-pinterest-p text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <h3 class="title-font text-2xl font-bold text-gray-800 mb-4">Assine nossa newsletter</h3>
+                        <form class="space-y-4">
+                            <div>
+                                <input type="text" placeholder="Seu nome" class="w-full px-4 py-2 border border-gray-300 rounded-md newsletter-input focus:border-amber-600">
+                            </div>
+                            <div>
+                                <input type="email" placeholder="Seu e-mail" class="w-full px-4 py-2 border border-gray-300 rounded-md newsletter-input focus:border-amber-600">
+                            </div>
+                            <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white px-6 py-2 rounded-md font-medium transition duration-300">
+                                Assinar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-12 pb-6">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="title-font text-lg font-bold mb-4">LUMINA</h4>
+                    <p class="text-gray-400 mb-4">Semi-joias de qualidade que combinam elegância e acessibilidade para todos os momentos.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="title-font text-lg font-bold mb-4">Links Úteis</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Sobre Nós</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Nossa História</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Trocas e Devoluções</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="title-font text-lg font-bold mb-4">Minha Conta</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Minha Conta</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Meus Pedidos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Lista de Desejos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="title-font text-lg font-bold mb-4">Contato</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-map-marker-alt mr-2"></i> Av. Paulista, 1000 - São Paulo, SP
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-phone-alt mr-2"></i> (11) 1234-5678
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-envelope mr-2"></i> contato@luminasemijoias.com.br
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fas fa-clock mr-2"></i> Seg-Sex: 9h-18h | Sáb: 9h-13h
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 Lumina Semi-Joias. Todos os direitos reservados.</p>
+                <div class="flex space-x-6">
+                    <img src="https://via.placeholder.com/40x25" alt="Visa" class="h-6">
+                    <img src="https://via.placeholder.com/40x25" alt="Mastercard" class="h-6">
+                    <img src="https://via.placeholder.com/40x25" alt="American Express" class="h-6">
+                    <img src="https://via.placeholder.com/40x25" alt="Pix" class="h-6">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 w-full md:w-96 h-full bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out z-50 overflow-y-auto">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="title-font text-xl font-bold">Seu Carrinho (3)</h3>
+                <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="space-y-4 mb-6">
+                <!-- Cart Item 1 -->
+                <div class="flex border-b border-gray-200 pb-4">
+                    <div class="w-20 h-20 bg-gray-100 rounded-md overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Brincos" class="w-full h-full object-cover">
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <h4 class="font-medium text-gray-800">Brincos Folheado Ouro</h4>
+                        <p class="text-sm text-gray-500">Tamanho: Único</p>
+                        <div class="flex justify-between items-center mt-1">
+                            <span class="font-bold text-gray-800">R$ 89,90</span>
+                            <div class="flex items-center border border-gray-300 rounded">
+                                <button class="px-2 py-1 text-gray-600 hover:bg-gray-100">-</button>
+                                <span class="px-2">1</span>
+                                <button class="px-2 py-1 text-gray-600 hover:bg-gray-100">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="text-gray-400 hover:text-red-500 ml-2">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+                
+                <!-- Cart Item 2 -->
+                <div class="flex border-b border-gray-200 pb-4">
+                    <div class="w-20 h-20 bg-gray-100 rounded-md overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Anel" class="w-full h-full object-cover">
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <h4 class="font-medium text-gray-800">Anel Prata com Zircônia</h4>
+                        <p class="text-sm text-gray-500">Tamanho: 17</p>
+                        <div class="flex justify-between items-center mt-1">
+                            <span class="font-bold text-gray-800">R$ 79,90</span>
+                            <div class="flex items-center border border-gray-300 rounded">
+                                <button class="px-2 py-1 text-gray-600 hover:bg-gray-100">-</button>
+                                <span class="px-2">1</span>
+                                <button class="px-2 py-1 text-gray-600 hover:bg-gray-100">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="text-gray-400 hover:text-red-500 ml-2">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+                
+                <!-- Cart Item 3 -->
+                <div class="flex border-b border-gray-200 pb-4">
+                    <div class="w-20 h-20 bg-gray-100 rounded-md overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1611591437281-460914d22803?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Colar" class="w-full h-full object-cover">
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <h4 class="font-medium text-gray-800">Colar Pérola Dourada</h4>
+                        <p class="text-sm text-gray-500">Tamanho: 45cm</p>
+                        <div class="flex justify-between items-center mt-1">
+                            <span class="font-bold text-gray-800">R$ 129,90</span>
+                            <div class="flex items-center border border-gray-300 rounded">
+                                <button class="px-2 py-1 text-gray-600 hover:bg-gray-100">-</button>
+                                <span class="px-2">1</span>
+                                <button class="px-2 py-1 text-gray-600 hover:bg-gray-100">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="text-gray-400 hover:text-red-500 ml-2">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-200 pt-4 mb-6">
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">Subtotal</span>
+                    <span class="font-bold">R$ 299,70</span>
+                </div>
+                <div class="flex justify-between mb-2">
+                    <span class="text-gray-600">Frete</span>
+                    <span class="font-bold">Grátis</span>
+                </div>
+                <div class="flex justify-between text-lg font-bold mt-4">
+                    <span>Total</span>
+                    <span>R$ 299,70</span>
+                </div>
+            </div>
+            
+            <div class="space-y-3">
+                <a href="#" class="block bg-amber-600 hover:bg-amber-700 text-white text-center py-3 rounded-md font-medium transition duration-300">
+                    Finalizar Compra
+                </a>
+                <a href="#" class="block border border-gray-300 text-gray-700 hover:border-amber-600 hover:text-amber-600 text-center py-3 rounded-md font-medium transition duration-300">
+                    Continuar Comprando
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay for cart -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden" onclick="toggleCart()"></div>
+
+    <script>
+        // Toggle cart sidebar
+        function toggleCart() {
+            const cart = document.getElementById('cart-sidebar');
+            const overlay = document.getElementById('cart-overlay');
+            
+            if (cart.classList.contains('translate-x-full')) {
+                cart.classList.remove('translate-x-full');
+                overlay.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            } else {
+                cart.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+        
+        // Simple product hover effect
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.querySelector('.product-overlay').style.opacity = '1';
+                card.querySelector('.product-overlay').style.backgroundColor = 'rgba(0,0,0,0.5)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.querySelector('.product-overlay').style.opacity = '0';
+                card.querySelector('.product-overlay').style.backgroundColor = 'rgba(0,0,0,0)';
+            });
+        });
+    </script>
+</body>
+</html>
